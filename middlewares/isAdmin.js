@@ -1,5 +1,6 @@
 const User = require("../models/User");
 
+//Middleware to check the user is admin or not
 const isAdmin = async (req, res, next) => {
   try {
     const user = await User.findById(req.user); 
