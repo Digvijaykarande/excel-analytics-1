@@ -1,0 +1,10 @@
+**********      frontend URLS     ***********
+**********                        ***********
+
+http://localhost:8000/api/auth/register  (REGISTRATION URL)
+
+http://localhost:8000/api/auth/login    (LOGIN URL)
+
+http://localhost:8000/api/users/me      (GET DATA ABOUT THE LOGINED USER)
+
+http://localhost:8000/api/users         (ONLY ADMIN CAN ACCESS)
