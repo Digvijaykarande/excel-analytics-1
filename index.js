@@ -17,7 +17,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
 // API Routes
-app.get("/", (req, res) => {res.send(" Welcome to the Excel Analytics API Server!");});
+app.get("/", (req, res) => {res.send("  Excel Analytics API Server is here!");});
 
 app.use("/api/auth", require("./routes/authRoutes"));
 app.use("/api/users", require("./routes/userRoutes"));
