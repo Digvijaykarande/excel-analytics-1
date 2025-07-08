@@ -1,10 +1,10 @@
 **********      frontend URLS     ***********
 **********                        ***********
 
-http://localhost:8000/api/auth/register  (REGISTRATION URL)
+https://excel-analytics-api-3u42.onrender.com/api/auth/register  (REGISTRATION URL)
 
-http://localhost:8000/api/auth/login    (LOGIN URL)
+https://excel-analytics-api-3u42.onrender.com/api/auth/login    (LOGIN URL)
 
-http://localhost:8000/api/users/me      (GET DATA ABOUT THE LOGINED USER)
+https://excel-analytics-api-3u42.onrender.com/api/users/me      (GET DATA ABOUT THE LOGINED USER)
 
-http://localhost:8000/api/users         (ONLY ADMIN CAN ACCESS)
+https://excel-analytics-api-3u42.onrender.com/api/users         (ONLY ADMIN CAN ACCESS)
