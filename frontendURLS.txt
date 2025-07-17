@@ -5,6 +5,10 @@ https://excel-analytics-api-3u42.onrender.com/api/auth/register  (REGISTRATION U
 
 https://excel-analytics-api-3u42.onrender.com/api/auth/login    (LOGIN URL)
 
-https://excel-analytics-api-3u42.onrender.com/api/users/me      (GET DATA ABOUT THE LOGINED USER)
+https://excel-analytics-api-3u42.onrender.com/api/users/me     (GET DATA ABOUT THE LOGINED USER)
 
 https://excel-analytics-api-3u42.onrender.com/api/users         (ONLY ADMIN CAN ACCESS)
+
+https://excel-analytics-api-3u42.onrender.com/api/excel/files (view all uploaded files)
+
+https://excel-analytics-api-3u42.onrender.com/api/excel/upload (upload excel file )
