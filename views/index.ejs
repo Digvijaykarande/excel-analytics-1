@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Excel Analytics API Documentation</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+      background-color: #f4f4f4;
+      color: #333;
+    }
+    h1, h2 {
+      color: #2c3e50;
+    }
+    .route-block {
+      background: #fff;
+      padding: 20px;
+      margin: 20px 0;
+      border-left: 5px solid #3498db;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    }
+    code, pre {
+      background: #f9f9f9;
+      padding: 10px;
+      display: block;
+      border: 1px solid #ccc;
+      overflow-x: auto;
+    }
+    a {
+      color: #3498db;
+      text-decoration: none;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <h1>📊 Excel Analytics API</h1>
+  <p>Welcome to the backend API for Excel Analytics. You can use the following routes to register, login, upload Excel files, view results, and download files.</p>
+
+  <div class="route-block">
+    <h2>🔐 Auth Routes</h2>
+    <p><strong>Register User:</strong></p>
+    <code>POST https://excel-analytics-api-3u42.onrender.com/api/auth/register</code>
+    <pre><code>{
+  "name": "John Doe",
+  "email": "john@example.com",
+  "password": "securepassword"
+}</code></pre>
+
+    <p><strong>Login User:</strong></p>
+    <code>POST https://excel-analytics-api-3u42.onrender.com/api/auth/login</code>
+    <pre><code>{
+  "email": "john@example.com",
+  "password": "securepassword"
+}</code></pre>
+  </div>
+
+  <div class="route-block">
+    <h2>👤 User Routes</h2>
+    <p><strong>Get All Users (Admin only):</strong></p>
+    <code>GET https://excel-analytics-api-3u42.onrender.com/api/users</code>
+  </div>
+
+  <div class="route-block">
+    <h2>📁 Excel Routes</h2>
+    <p><strong>Upload Excel File:</strong></p>
+    <code>POST https://excel-analytics-api-3u42.onrender.com/api/excel/upload</code>
+    <p><em>Use multipart/form-data with a file input named <code>excelFile</code></em></p>
+
+    <p><strong>Get Uploaded Files List:</strong></p>
+    <code>GET https://excel-analytics-api-3u42.onrender.com/api/excel/files</code>
+
+    <p><strong>Download Excel File:</strong></p>
+    <code>GET https://excel-analytics-api-3u42.onrender.com/api/excel/download/:filename</code>
+    <pre><code>Example:
+GET https://excel-analytics-api-3u42.onrender.com/api/excel/download/report1.xlsx</code></pre>
+  </div>
+
+  <footer>
+    <hr>
+    <p style="font-size: 14px;">© 2025 Excel Analytics Backend. Powered by Express, MongoDB.</p>
+    <p style="font-size: 14px;">your friendly developer <a href="https://github.com/Digvijaykarande">Digvijay Karande</a></p>
+  </footer>
+</body>
+</html>
