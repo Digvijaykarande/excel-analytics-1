@@ -2,46 +2,39 @@ const express = require("express");
 const dotenv = require("dotenv");
 const cors = require("cors");
 const connectDB = require("./config/db");
+const rateLimit = require("express-rate-limit");
+const path = require("path"); 
 const app = express();
-const fs = require('fs');
-const router = express.Router();
-const PORT = process.env.PORT || 8000;
-
 dotenv.config();
-// Connect MongoDB
+
 connectDB();
 
-//rate limiter
-const rateLimit = require('express-rate-limit');
+app.set("view engine", "ejs");
+app.set("views", path.join(__dirname, "views")); 
+
+// Rate Limiter Middleware
 const limiter = rateLimit({
   windowMs: 1 * 60 * 1000, // 1 minute
-  max: 50, // limit each IP to 100 requests per windowMs
+  max: 50, // limit each IP to 50 requests per windowMs
   message: "Too many requests, please try again later.",
 });
-
 app.use(limiter);
 
-// Middlewares
-app.use(cors()); //allowed access to all ( only for testing)
+// Core Middlewares
+app.use(cors()); // Enable for all origins (for production, restrict by origin)
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
+app.use("/uploads", express.static(path.join(__dirname, "uploads")));
 
 // API Routes
-app.get("/", (req, res) => {res.send("  Excel Analytics API Server is here!");});
+app.get("/", (req, res) => {
+  res.render("index");
+});
 app.use("/api/auth", require("./routes/authRoutes"));
 app.use("/api/users", require("./routes/userRoutes"));
 app.use("/api/excel", require("./routes/excelRoutes"));
-app.use("/api/excel/files", require("./routes/excelRoutes"));
 
-//download files 
-router.get('/api/excel/download/:id', async (req, res) => {
-  const fileId = req.params.id;
-  const fileRecord = await FileModel.findById(fileId);
-  if (!fileRecord) {
-    return res.status(404).send('File not found');
-  }
-  const filePath = path.join(__dirname, '..', 'uploads', fileRecord.filename);
-  res.download(filePath, fileRecord.filename);
-});
 
+// Start server
+const PORT = process.env.PORT || 8000;
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
