@@ -1,6 +1,8 @@
+const express = require('express');
+const router = express.Router();
 const axios = require('axios');
 
-app.post('/api/perplexity', async (req, res) => {
+router.post('/perplexity', async (req, res) => {
   try {
     const response = await axios.post(
       'https://api.perplexity.ai/v1/ask',
@@ -18,3 +20,5 @@ app.post('/api/perplexity', async (req, res) => {
     res.status(500).json({ error: 'Failed to fetch summary from Perplexity API' });
   }
 });
+
+module.exports = router;

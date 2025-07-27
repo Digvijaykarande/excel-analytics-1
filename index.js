@@ -5,6 +5,7 @@ const connectDB = require("./config/db");
 const rateLimit = require("express-rate-limit");
 const path = require("path"); 
 const app = express();
+const perplexityRoute = require('./routes/perplexityRoute');
 dotenv.config();
 
 connectDB();
@@ -40,6 +41,7 @@ app.use("/api/auth", require("./routes/authRoutes"));
 app.use("/api/users", require("./routes/userRoutes"));
 app.use("/api/excel", require("./routes/excelRoutes"));
 app.use("/api/files", require("./routes/fileRoutes"));
+app.use('/api', perplexityRoute);
 
 // Start server
 const PORT = process.env.PORT || 8000;
