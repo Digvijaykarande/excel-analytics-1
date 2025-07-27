@@ -5,7 +5,7 @@ const connectDB = require("./config/db");
 const rateLimit = require("express-rate-limit");
 const path = require("path"); 
 const app = express();
-const perplexityRoute = require('./routes/perplexityRoute');
+const perplexityRoute = require('./routes/perplexityRoutes');
 dotenv.config();
 
 connectDB();
