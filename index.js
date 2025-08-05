@@ -23,9 +23,11 @@ app.use(limiter);
 // Core Middlewares
 app.use(cors({
   origin: ['http://localhost:5173', 
+    'https://excel-anlytics.netlify.app/',
     'https://excel-analytics-git-main-digvijaykarandes-projects.vercel.app/'],
   credentials: true,
 }));
+
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
