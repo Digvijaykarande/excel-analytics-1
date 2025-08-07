@@ -16,7 +16,6 @@ app.use(cors({
   origin: [
     'http://localhost:5173',
     'https://excel-anlytics.netlify.app',
-    'https://excel-analytics-git-main-digvijaykarandes-projects.vercel.app'
   ],
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
   allowedHeaders: ['Content-Type', 'Authorization'],
@@ -25,13 +24,6 @@ app.use(cors({
 
 app.options('*', cors());
 
-
-const limiter = rateLimit({
-  windowMs: 1 * 60 * 1000, 
-  max: 50,
-  message: "Too many requests, please try again later.",
-});
-app.use(limiter);
 
 // Core Middlewares
 app.use(express.json());
