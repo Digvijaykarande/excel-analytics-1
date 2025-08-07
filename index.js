@@ -14,7 +14,7 @@ app.set("views", path.join(__dirname, "views"));
 app.use(cors({
   origin: [
     'http://localhost:5173',
-    'https://excel-anlytics.netlify.app/',
+    'https://excel-anlytics.netlify.app',
   ],
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
   allowedHeaders: ['Content-Type', 'Authorization'],
