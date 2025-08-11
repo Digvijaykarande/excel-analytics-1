@@ -12,10 +12,11 @@ connectDB();
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "views")); 
 
+// Core Middlewares
 app.use(cors({
   origin: [
     'http://localhost:5173',
-    'https://excel-anlytics.netlify.app',
+    'https://excel-anlytics.netlify.app', 
     'https://excel-analytics-git-main-digvijaykarandes-projects.vercel.app'
   ],
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
@@ -23,17 +24,7 @@ app.use(cors({
   credentials: true,
 }));
 
-app.options('*', cors());
 
-
-const limiter = rateLimit({
-  windowMs: 1 * 60 * 1000, 
-  max: 50,
-  message: "Too many requests, please try again later.",
-});
-app.use(limiter);
-
-// Core Middlewares
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use("/uploads", express.static(path.join(__dirname, "uploads")));
