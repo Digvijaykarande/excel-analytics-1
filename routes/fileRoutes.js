@@ -9,7 +9,9 @@ router.get('/download/:filename', async (req, res) => {
     const file = await ExcelData.findOne({ filename: req.params.filename });
     if (!file) return res.status(404).json({ message: 'File not found' });
 
-    const data = file.data.map(row => Object.fromEntries(row));
+    const data = file.data.map(row =>
+      row instanceof Map ? Object.fromEntries(row) : (row?.toObject ? row.toObject() : row)
+    );
     const worksheet = XLSX.utils.json_to_sheet(data);
     const workbook = XLSX.utils.book_new();
     XLSX.utils.book_append_sheet(workbook, worksheet, 'Sheet1');

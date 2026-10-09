@@ -1,0 +1,11 @@
+const router = require("express").Router();
+const rateLimit = require("express-rate-limit");
+const { auth } = require("../middlewares/auth");
+const { asyncHandler } = require("../middlewares/error");
+const c = require("../controllers/aiController");
+const aiLimiter = rateLimit({ windowMs: 60 * 60 * 1000, limit: 40, standardHeaders: true, legacyHeaders: false, keyGenerator: (req) => req.userId, message: { msg: "AI usage limit reached for this hour. Please try again later." } });
+router.use(auth);
+router.get("/status", c.status);
+router.post("/insights", aiLimiter, asyncHandler(c.insights));
+router.post("/ask", aiLimiter, asyncHandler(c.ask));
+module.exports = router;

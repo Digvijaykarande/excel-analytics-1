@@ -1,0 +1,15 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Excel Analytics API</title>
+<style>body{font:15px/1.6 system-ui,sans-serif;max-width:820px;margin:40px auto;padding:0 18px;color:#121826}code{background:#f1f3f9;padding:2px 6px;border-radius:5px}table{border-collapse:collapse;width:100%}td,th{border-bottom:1px solid #e3e6ef;padding:8px;text-align:left}</style></head><body>
+<h1>Excel Analytics API v2</h1><p>All routes except <code>/health</code> and <code>/api/auth/*</code> need <code>Authorization: Bearer &lt;token&gt;</code>.</p>
+<table><tr><th>Method</th><th>Route</th><th>Purpose</th></tr>
+<tr><td>POST</td><td>/api/auth/register · /login</td><td>Create account / log in (returns token + user)</td></tr>
+<tr><td>GET PATCH DELETE</td><td>/api/users/me</td><td>Profile, rename, delete account</td></tr>
+<tr><td>POST</td><td>/api/users/me/password</td><td>Change password</td></tr>
+<tr><td>POST GET</td><td>/api/datasets</td><td>Save parsed dataset / list (search, sort, starred, page)</td></tr>
+<tr><td>GET</td><td>/api/datasets/stats</td><td>Dashboard totals + recent files</td></tr>
+<tr><td>GET PATCH DELETE</td><td>/api/datasets/:id</td><td>Metadata, rename/star, delete</td></tr>
+<tr><td>GET</td><td>/api/datasets/:id/sheets/:index</td><td>Rows of one sheet</td></tr>
+<tr><td>GET</td><td>/api/datasets/:id/download?format=xlsx|csv</td><td>Export</td></tr>
+<tr><td>PUT</td><td>/api/datasets/:id/insights</td><td>Cache AI insights</td></tr>
+<tr><td>GET POST</td><td>/api/ai/status · /insights · /ask</td><td>AI (key stays on the server)</td></tr>
+<tr><td>GET PATCH DELETE</td><td>/api/admin/*</td><td>Admin only: stats, users, roles, files</td></tr></table></body></html>

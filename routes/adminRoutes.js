@@ -1,0 +1,12 @@
+const router = require("express").Router();
+const { auth, requireAdmin } = require("../middlewares/auth");
+const { asyncHandler, validateId } = require("../middlewares/error");
+const c = require("../controllers/adminController");
+router.use(auth, requireAdmin);
+router.get("/stats", asyncHandler(c.stats));
+router.get("/users", asyncHandler(c.listUsers));
+router.patch("/users/:id/role", validateId(), asyncHandler(c.setRole));
+router.delete("/users/:id", validateId(), asyncHandler(c.deleteUser));
+router.get("/datasets", asyncHandler(c.listDatasets));
+router.delete("/datasets/:id", validateId(), asyncHandler(c.deleteDataset));
+module.exports = router;

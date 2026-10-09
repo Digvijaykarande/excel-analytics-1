@@ -4,8 +4,7 @@ const excelDataSchema = new mongoose.Schema({
   filename: String,
   data: [
     {
-      type: Map,
-      of: String
+      type: mongoose.Schema.Types.Mixed
     }
   ],
   userId: {
